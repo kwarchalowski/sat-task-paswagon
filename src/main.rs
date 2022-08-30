@@ -12,7 +12,14 @@ fn world() -> &'static str {
 
 #[get("/probabilityOfUnitInjectorFail/<vin>")]
 fn probability_of_unit_injector_fail(vin: String) -> String {
-    format!("Hello,\n\tModel: PeopleCar PasWagon C6,\n\tVIN:\t{}", vin.as_str())
+    let random_probability = mycargo::myrandom::random_percentage();
+    println!("Hello,\n\tModel: PeopleCar PasWagon C6,\n\tVIN:\t{}", vin.as_str());
+    //println!("Probability of failure: {:.0}% ({})", random_probability*100.0, random_probability);
+
+    //(random_probability % 100.0).to_string()
+    println!("Probability of failure: {}% ({:.2})", random_probability, random_probability as f32 / 100.0);
+
+    (random_probability as f32 / 100.0 ).to_string().replace(".", ",")
 }
 
 #[get("/calculate/<distance>/<prod_year>/<fuel>")]
@@ -21,6 +28,9 @@ fn calculate(distance: u32, prod_year: u16, fuel: f32) -> String {
     let fuel_consumed = ((distance as f32)/100.0) * fuel;
 
     println!("\n----------------\n[... beep beep prrrt ...]\n----------");
+    //myrand::myrand::public_function();
+    mycargo::myrandom::public_function();
+    
     println!("Distance: \x1b[92m{} km\x1b[0m", distance);
     println!("Car production year: \x1b[1m{}\x1b[0m", prod_year);
     println!("Fuel consumption (per 100 km): \x1b[93m{} l\x1b[0m\n----------", fuel);

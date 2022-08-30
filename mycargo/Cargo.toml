@@ -1,0 +1,7 @@
+[package]
+name = "mycargo"
+version = "0.2.0"
+authors = ["Karol Warchalowski"]
+
+[dependencies]
+rand = "0.8.5"
