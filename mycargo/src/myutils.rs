@@ -18,12 +18,3 @@ pub fn is_car_production_year_valid(year: &u16) -> bool {
 
     true
 }
-
-pub fn is_vin_valid(vin: &String) -> bool {
-
-    if vin.len() != 10 {
-        return false;
-    }
-
-    true
-}

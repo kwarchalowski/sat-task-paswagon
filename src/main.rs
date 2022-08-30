@@ -7,10 +7,9 @@ use mycargo::myutils;
 fn probability_of_unit_injector_fail(vin: String) -> String {
     let tmp_failProbability = myutils::random_percentage();
     let failProbability = tmp_failProbability as f32 / 100.0 ;
-    let vin_status = if myutils::is_vin_valid(&vin) {"VALID"} else {"INVALID"};
-    println!("\n----------------\n[... beep beep prrrt ...]\n----------");
 
-    println!("\tModel: PeopleCar PasWagon C6,\n\tVIN:\t{} (\x1b[1m{}\x1b[0m)", vin, vin_status);
+    println!("\n----------------\n[... beep beep prrrt ...]\n----------");
+    println!("\tModel: PeopleCar PasWagon C6,\n\tVIN:\t{}", vin);
     println!("\n\tProbability of failure: \x1b[93m{}%\x1b[0m ({:.2})\n--------------\n", tmp_failProbability, failProbability);
 
     failProbability.to_string().replace(".", ",")
