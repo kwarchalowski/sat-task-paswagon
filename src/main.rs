@@ -1,33 +1,34 @@
+#![allow(non_snake_case)]
 #[macro_use] extern crate rocket;
 
-use mycargo::myrandom;
+use mycargo::myutils;
 
 #[get("/probabilityOfUnitInjectorFail/<vin>")]
 fn probability_of_unit_injector_fail(vin: String) -> String {
-    let random_probability_u8 = myrandom::random_percentage();
-    let random_probability_f32 = random_probability_u8 as f32 / 100.0 ;
+    let tmp_failProbability = myutils::random_percentage();
+    let failProbability = tmp_failProbability as f32 / 100.0 ;
+    let vin_status = if myutils::is_vin_valid(&vin) {"VALID"} else {"INVALID"};
     println!("\n----------------\n[... beep beep prrrt ...]\n----------");
-    println!("\tModel: PeopleCar PasWagon C6,\n\tVIN:\t{}", vin.as_str());
-    println!("\n\tProbability of failure: \x1b[93m{}%\x1b[0m ({:.2})\n--------------\n", random_probability_u8, random_probability_f32);
 
-    random_probability_f32.to_string().replace(".", ",")
+    println!("\tModel: PeopleCar PasWagon C6,\n\tVIN:\t{} (\x1b[1m{}\x1b[0m)", vin, vin_status);
+    println!("\n\tProbability of failure: \x1b[93m{}%\x1b[0m ({:.2})\n--------------\n", tmp_failProbability, failProbability);
+
+    failProbability.to_string().replace(".", ",")
 }
 
-#[get("/calculate/<distance>/<prod_year>/<fuel>")]
-fn calculate(distance: u32, prod_year: u16, fuel: f32) -> String {
+#[get("/calculateDisselUsageForDistance/<distance>/<yearOfProduction>/<fuelUsagePer100KM>")]
+fn calculate(distance: u32, yearOfProduction: u16, fuelUsagePer100KM: f32) -> String {
 
-    let fuel_consumed = ((distance as f32)/100.0) * fuel;
+    let fuelUsage = ((distance as f32)/100.0) * fuelUsagePer100KM;
+    let production_year_status = if myutils::is_car_production_year_valid(&yearOfProduction) {"VALID"} else {"INVALID"};
 
     println!("\n----------------\n[... beep beep prrrt ...]\n----------");
-
-    mycargo::myrandom::public_function();
-    
     println!("Distance: \x1b[92m{} km\x1b[0m", distance);
-    println!("Car production year: \x1b[1m{}\x1b[0m", prod_year);
-    println!("Fuel consumption (per 100 km): \x1b[93m{} l\x1b[0m\n----------", fuel);
-    println!("\t Fuel used:\n\t\t\x1b[4m{:.2} l\x1b[0m\n--------------\n", fuel_consumed);
+    println!("Car production year: \x1b[1m{}\x1b[0m (\x1b[1m{}\x1b[0m)", yearOfProduction, production_year_status);
+    println!("Fuel consumption (per 100 km): \x1b[93m{} l\x1b[0m\n----------", fuelUsagePer100KM);
+    println!("\t Fuel used:\n\t\t\x1b[4m{:.2} l\x1b[0m\n--------------\n", fuelUsage);
     
-    fuel_consumed.to_string()
+    fuelUsage.to_string()
 }
 
 #[launch]

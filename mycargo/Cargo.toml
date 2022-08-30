@@ -5,3 +5,4 @@ authors = ["Karol Warchalowski"]
 
 [dependencies]
 rand = "0.8.5"
+chrono = "0.4"
