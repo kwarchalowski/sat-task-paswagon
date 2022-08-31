@@ -97,11 +97,3 @@ Running API should respond with calculated content:
 and the logs will be shown in running terminal:
 
 ![Logs in the console](.img/api_response.png)
-
-<br>
-
-# 💬 Contact me
-- :globe_with_meridians: [Homepage](https://warchalowski.pl)
-- :telephone: [LinkedIn](https://www.linkedin.com/in/karol-warcha%C5%82owski/) profile
-- :loud_sound: [Discord](https://discord.com/users/221202392685871114)
-- :e-mail: [email me](mailto:karol@warchalowski.pl) directly
