@@ -7,7 +7,6 @@ mod main_tests {
         assert_eq!(result, 4);
     }
 
-
     #[test]
     fn probability_has_to_be_in_0_100_range() {
         assert!(mycargo::myutils::random_percentage() > 0);
