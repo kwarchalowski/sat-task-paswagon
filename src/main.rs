@@ -9,7 +9,7 @@ fn probability_of_unit_injector_fail(vin: String) -> String {
     let failProbability = tmp_failProbability as f32 / 100.0 ;
 
     println!("\n----------------\n[... beep beep prrrt ...]\n--------");
-    println!("\tModel: PeopleCar PasWagon C6,\n\tVIN:\t{}", vin);
+    println!("\tModel:  PeopleCar PasWagon C6\n\tVIN:\t{}", vin);
     println!("\n\tProbability of failure: \x1b[93m{}%\x1b[0m ({:.2})\n----------------\n", tmp_failProbability, failProbability);
 
     failProbability.to_string().replace(".", ",")
@@ -39,6 +39,5 @@ fn rocket() -> _ {
 
 // Tests
 #[cfg(test)]
-//#[path = "main_tests.rs"]
 #[path = "tests/main_tests.rs"]
 mod main_tests;

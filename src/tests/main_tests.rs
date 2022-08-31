@@ -1,8 +1,5 @@
-// tests
 #[cfg(test)]
 mod main_tests {
-    
-    use super::super::*;
 
     #[test]
     fn it_works() {
@@ -25,7 +22,7 @@ mod main_tests {
         let mock_fuel_usage_per_100km = 4.20 as f32;
 
         // Act
-        let mock_result = calculate_dissel_usage_for_distance(mock_distance, mock_production_year, mock_fuel_usage_per_100km);
+        let mock_result = super::super::calculate_dissel_usage_for_distance(mock_distance, mock_production_year, mock_fuel_usage_per_100km);
 
         // Assert
         assert_eq!(mock_result, "0");
