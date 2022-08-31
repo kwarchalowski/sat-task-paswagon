@@ -1,3 +1,6 @@
+// * All printlns left for better console output @ API calls. 'Weird' formatting because of coloring parts of the logs.
+// * non_snake_case param allowed to stick with the endpoint/inputs/ names from solution description.
+
 #![allow(non_snake_case)]
 #[macro_use] extern crate rocket;
 
@@ -13,6 +16,7 @@ fn probability_of_unit_injector_fail(vin: String) -> String {
     failProbability.to_string().replace(".", ",")
 }
 
+// ? '..Dissel..' because of the name stated in solution description. Should change to '..Diesel..'?
 #[get("/calculateDisselUsageForDistance/<distance>/<yearOfProduction>/<fuelUsagePer100KM>")]
 fn calculate_dissel_usage_for_distance(distance: u32, yearOfProduction: u16, fuelUsagePer100KM: f32) -> String {
 
@@ -34,7 +38,7 @@ fn rocket() -> _ {
         .mount("/", routes![probability_of_unit_injector_fail, calculate_dissel_usage_for_distance])
 }
 
-// Tests
+// * Tests
 #[cfg(test)]
 #[path = "tests/main_tests.rs"]
 mod main_tests;
