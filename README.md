@@ -20,7 +20,7 @@ Two REST API GET endpoints implemented in Rust (Rocket).
 
 <br>
 
-3. Build the solution. Be aware it can take some time when building for the first time.
+3. Build the solution. Be aware that it can take some time when building for the first time.
 
     ```
     cargo build
