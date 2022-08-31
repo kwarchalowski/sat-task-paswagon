@@ -18,9 +18,9 @@ fn probability_of_unit_injector_fail(vin: String) -> String {
 
 // ? '..Dissel..' because of the name stated in solution description. Should change to '..Diesel..'?
 #[get("/calculateDisselUsageForDistance/<distance>/<yearOfProduction>/<fuelUsagePer100KM>")]
-fn calculate_dissel_usage_for_distance(distance: u32, yearOfProduction: u16, fuelUsagePer100KM: f32) -> String {
+fn calculate_dissel_usage_for_distance(distance: u32, yearOfProduction: u16, fuelUsagePer100KM: u16) -> String {
 
-    let fuelUsage = ((distance as f32)/100.0) * fuelUsagePer100KM;
+    let fuelUsage = ((distance as f32)/100.0) * fuelUsagePer100KM as f32;
     let yearOfProductionStatus = if mycargo::myutils::is_car_production_year_valid(&yearOfProduction) {"VALID"} else {"INVALID"};
 
     println!("\n----------------\n[... beep beep prrrt ...]\n----------");

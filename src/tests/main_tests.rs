@@ -12,7 +12,7 @@ mod main_tests {
         // * Arrange
         let mock_distance = 0 as u32;
         let mock_production_year = 1991 as u16;
-        let mock_fuel_usage_per_100km = 4.20 as f32;
+        let mock_fuel_usage_per_100km = 4 as u16;
 
         // ! Act
         let result = super::super::calculate_dissel_usage_for_distance(mock_distance, mock_production_year, mock_fuel_usage_per_100km);
@@ -26,7 +26,7 @@ mod main_tests {
         // * Arrange
         let mock_distance = 725 as u32;
         let mock_production_year = 1991 as u16;
-        let mock_fuel_usage_per_100km = 0 as f32;
+        let mock_fuel_usage_per_100km = 0 as u16;
 
         // ! Act
         let result = super::super::calculate_dissel_usage_for_distance(mock_distance, mock_production_year, mock_fuel_usage_per_100km);
