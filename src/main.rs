@@ -19,11 +19,11 @@ fn probability_of_unit_injector_fail(vin: String) -> String {
 fn calculate_dissel_usage_for_distance(distance: u32, yearOfProduction: u16, fuelUsagePer100KM: f32) -> String {
 
     let fuelUsage = ((distance as f32)/100.0) * fuelUsagePer100KM;
-    let production_year_status = if myutils::is_car_production_year_valid(&yearOfProduction) {"VALID"} else {"INVALID"};
+    let yearOfProductionStatus = if myutils::is_car_production_year_valid(&yearOfProduction) {"VALID"} else {"INVALID"};
 
     println!("\n----------------\n[... beep beep prrrt ...]\n----------");
     println!("Distance: \x1b[92m{} km\x1b[0m", distance);
-    println!("Car production year: \x1b[1m{}\x1b[0m (\x1b[1m{}\x1b[0m)", yearOfProduction, production_year_status);
+    println!("Car production year: \x1b[1m{}\x1b[0m (\x1b[1m{}\x1b[0m)", yearOfProduction, yearOfProductionStatus);
     println!("Fuel consumption (per 100 km): \x1b[93m{} l\x1b[0m\n----------", fuelUsagePer100KM);
     println!("\t Fuel used:\n\t\t\x1b[4m{:.2} l\x1b[0m\n--------------\n", fuelUsage);
     
