@@ -8,15 +8,15 @@ fn probability_of_unit_injector_fail(vin: String) -> String {
     let tmp_failProbability = myutils::random_percentage();
     let failProbability = tmp_failProbability as f32 / 100.0 ;
 
-    println!("\n----------------\n[... beep beep prrrt ...]\n----------");
+    println!("\n----------------\n[... beep beep prrrt ...]\n--------");
     println!("\tModel: PeopleCar PasWagon C6,\n\tVIN:\t{}", vin);
-    println!("\n\tProbability of failure: \x1b[93m{}%\x1b[0m ({:.2})\n--------------\n", tmp_failProbability, failProbability);
+    println!("\n\tProbability of failure: \x1b[93m{}%\x1b[0m ({:.2})\n----------------\n", tmp_failProbability, failProbability);
 
     failProbability.to_string().replace(".", ",")
 }
 
 #[get("/calculateDisselUsageForDistance/<distance>/<yearOfProduction>/<fuelUsagePer100KM>")]
-fn calculate(distance: u32, yearOfProduction: u16, fuelUsagePer100KM: f32) -> String {
+fn calculate_dissel_usage_for_distance(distance: u32, yearOfProduction: u16, fuelUsagePer100KM: f32) -> String {
 
     let fuelUsage = ((distance as f32)/100.0) * fuelUsagePer100KM;
     let production_year_status = if myutils::is_car_production_year_valid(&yearOfProduction) {"VALID"} else {"INVALID"};
@@ -33,16 +33,12 @@ fn calculate(distance: u32, yearOfProduction: u16, fuelUsagePer100KM: f32) -> St
 #[launch]
 fn rocket() -> _ {
     rocket::build()
-        .mount("/", routes![probability_of_unit_injector_fail, calculate])
+        .mount("/", routes![probability_of_unit_injector_fail, calculate_dissel_usage_for_distance])
 }
 
 
-// tests
+// Tests
 #[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
-    }
-}
+//#[path = "main_tests.rs"]
+#[path = "tests/main_tests.rs"]
+mod main_tests;
