@@ -69,6 +69,7 @@ port = 9102
 <br>
 
 # ☎️ | API calls
+
 ```html
 GET     /calculateDisselUsageForDistance/<distance>/<yearOfProduction>/<fuelUsagePer100KM>
 
@@ -77,13 +78,26 @@ GET     /calculateDisselUsageForDistance/<distance>/<yearOfProduction>/<fuelUsag
         fuelUsagePer100KM - natural number (≥ 0)
 ```
 
+
+
 ```html
 GET     /probabilityOfUnitInjectorFail/<vin>
         
         vin - string
 ```
 
-<br>
+Just call the endpoint as you like, browser, Postman or curl:
+
+`curl http://127.0.0.1:9102/probabilityOfUnitInjectorFail/WW42088725PL`
+
+
+Running API should respond with calculated content:
+> 0,3 
+
+and the logs will be shown in running terminal:
+
+![Logs in the console](.img/api_response.png)
+
 <br>
 
 # 💬 Contact me
