@@ -1,6 +1,4 @@
-<h1 align="center">👋 Hey there, SAT People 😸</h1>
-<h6 align="center">Warsaw, Poland</h6>
-
+<h1 align="center">👋 Hey there 😸</h1>
 
 # 💭 | What's that? 
 Two REST API GET endpoints implemented in Rust (Rocket).
